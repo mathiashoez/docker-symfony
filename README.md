@@ -3,44 +3,43 @@ docker-symfony
 
 [![Build Status](https://secure.travis-ci.org/eko/docker-symfony.png?branch=master)](http://travis-ci.org/eko/docker-symfony)
 
-
-Just a litle Docker POC in order to have a complete stack for running Symfony into Docker containers using docker-compose tool.
-
+Juste un petit Docker afin d'avoir une pile complète pour l'exécution de Symfony dans des conteneurs Docker
 # Installation
 
-First, clone this repository:
+En premier, cloner le dépôt via github ou bitbucket:
 
 ```bash
-$ git clone git@github.com:eko/docker-symfony.git
+$ git clone git@github.com:matsomm/docker-symfony.git
 ```
 
-Next, put your Symfony application into `symfony` folder and do not forget to add `symfony.dev` in your `/etc/hosts` file.
+Ensuite, mettre votre application Symfony dans ` dossier symfony` et ne pas oublier d'ajouter ` symfony.dev` dans votre `/ etc / hosts` .
 
-Then, run:
+Ensuite, exécuter:
 
 ```bash
 $ docker-compose up
 ```
 
-You are done, you can visite your Symfony application on the following URL: `http://symfony.dev` (and access Kibana on `http://symfony.dev:81`)
+Vous avez terminé, vous pouvez visiter votre application Symfony à l'URL suivante: `http://symfony.dev` 
+(accès à Kibana à l'URL suivante : `http://symfony.dev:81`)
 
-_Note :_ you can rebuild all Docker images by running:
+_Note :_ vous pouvez reconstruire toutes les images Docker en exécutant :
 
 ```bash
 $ docker-compose build
 ```
 
-# How it works?
+# Comment ça fonctionne ? 
 
-Here are the `docker-compose` built images:
+Voici les images `docker-compose` :
 
-* `application`: This is the Symfony application code container,
-* `db`: This is the MySQL database container (can be changed to postgresql or whatever in `docker-compose.yml` file),
-* `php`: This is the PHP-FPM container in which the application volume is mounted,
-* `nginx`: This is the Nginx webserver container in which application volume is mounted too,
-* `elk`: This is a ELK stack container which uses Logstash to collect logs, send them into Elasticsearch and visualize them with Kibana.
+* `application`: Ceci est le conteneur de code de l'application Symfony ,
+* `db`: Ceci est le conteneur de base de données MySQL ( peut être changée pour PostgreSQL dans `docker-compose.yml`),
+* `php`: Cet élément parent renferme PHP- FPM dans lequel le volume d'application est monté,
+* `nginx`: Ceci est le conteneur de serveur web Nginx dans lequel le volume d'application est monté,
+* `elk`: Ceci est un récipient de pile ELK qui utilise Logstash pour collecter les journaux, les envoyer dans ElasticSearch et de les visualiser avec Kibana .
 
-This results in the following running containers:
+Il en résulte dans les récipients de fonctionnement suivants:
 
 ```bash
 > $ docker-compose ps
@@ -53,13 +52,13 @@ This results in the following running containers:
         docker_php_1           php5-fpm -F                      Up      9000/tcp
 ```
 
-# Read logs
+# lecture des logs
 
-You can access Nginx and Symfony application logs in the following directories into your host machine:
+Yvous pouvez accéder aux journaux de Nginx et Symfony dans les répertoires suivants dans votre machine hôte :
 
 * `logs/nginx`
 * `logs/symfony`
 
-# Use Kibana!
+# Utilisation de Kibana!
 
-You can also use Kibana to visualize Nginx & Symfony logs by visiting `http://symfony.dev:81`.
+Vous pouvez visualiser les logs Nginx & Symfony à cette URL : `http://symfony.dev:81`.
